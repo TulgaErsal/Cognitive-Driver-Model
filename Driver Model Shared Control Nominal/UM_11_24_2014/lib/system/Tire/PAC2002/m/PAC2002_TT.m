@@ -1,0 +1,8 @@
+function [FX, FY] = PAC2002_TT(FZ, KAPPA, ALPHA)
+
+load DATA_TIRE.mat
+GAMMA = zeros(size(FZ));
+VX = DATA_TIRE.LONGVL*ones(size(FZ));
+MODE = 'COMBSLIP';
+
+[FX,FY,~,~,~] = PAC2002(FZ, KAPPA, ALPHA, GAMMA, VX, MODE, DATA_TIRE);

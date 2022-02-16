@@ -1,0 +1,57 @@
+line 184 - line 238
+
+%PATCH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% a bug in the dpsimplify function is found
+% when the points are symetric, the center point is counted as a vertex
+% although it is at the center of a line
+
+% patch for this bug without moidifying dpsimplify()
+% approach #1
+% RM_IDX = [];
+% if length(ix) >= 3
+%     for j = 1:length(ix) - 2
+%         A1 = atan2((ps(j + 1, 2) - ps(j, 2)),...
+%                    (ps(j + 1, 1) - ps(j, 1)));
+%         A2 = atan2((ps(j + 2, 2) - ps(j, 2)),...
+%                    (ps(j + 2, 1) - ps(j, 1)));
+%                   
+%         if abs(mod(A1-A2,2*pi)) < 1*pi/180 || ...
+%            abs(mod(A2-A1,2*pi)) < 1*pi/180
+%             RM_IDX = [RM_IDX, j + 1];
+%         end
+%     end
+% end
+
+% approach #2
+loop = true;
+
+while loop == true
+    
+    RM_IDX = [];
+    loop = false;
+    
+    if length(ix) >= 3
+        for j = 1:length(ix) - 2
+            pts = p(ix(j):ix(j+2),:);
+            rsq = linear_regression(pts);
+            % [~,~,~,~,STATS] = regress(pts(:,2),pts(:,1));
+            % rsq = STATS(1);
+            if  rsq > 0.9999
+                RM_IDX = [RM_IDX, j + 1]; %#ok<AGROW>
+            end
+        end
+    end
+    
+    [~, IDX]	= sort(RM_IDX);
+    RM_IDX      = RM_IDX(IDX);
+    IDX         = diff(RM_IDX)==0;
+    RM_IDX(IDX) = [];
+    
+    if ~isempty(RM_IDX)
+        loop = true;
+    end
+    
+    ps(RM_IDX,:) = [];
+    ix(RM_IDX,:) = []; %#ok<AGROW>
+end
+%PATCH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

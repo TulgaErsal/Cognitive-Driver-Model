@@ -1,0 +1,5 @@
+line 240 - 243
+    if selected == 0                <-- add
+        selected = false;           <-- add
+    end                             <-- add
+	xy0 = T(3:4,selected).';

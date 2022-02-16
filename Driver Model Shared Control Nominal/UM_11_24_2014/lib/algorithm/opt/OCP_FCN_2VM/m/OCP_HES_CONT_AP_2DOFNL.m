@@ -1,0 +1,22 @@
+function VALUE_HES_CONT = OCP_HES_CONT_AP_2DOFNL(INPUT)
+
+NPH         = INPUT.AUXDATA.num.NPH;
+VD          = OCP_VEHICLE_DATA(INPUT);
+FML         = INPUT.AUXDATA.fml;
+
+REF_LINE	= FML.REF_LINE;
+INTG_W      = FML.INTG_W;
+
+VALUE_HES_CONT(NPH).DYNA = [];
+
+for IdxPH = 1:NPH
+    [~, X, Y, V, R, SA, PSI, SR]    = OCP_VEHICLE_STATE(INPUT.PHASE(IdxPH));
+    
+    VALUE_HES_CONT(IdxPH).DYNA      = OCP_HES_CONT_DYNAMICS_2DOFNL(V, R, PSI, SA, VD);
+    
+    PATH_IND                        = FML.PATH_IND(IdxPH,:);
+    
+    VALUE_HES_CONT(IdxPH).PATH      = OCP_HES_CONT_PATH_2DOF(X, Y, V, R, SA, PATH_IND);
+
+    VALUE_HES_CONT(IdxPH).INTG      = OCP_HES_CONT_INTG_2DOF(X, Y, SA, SR, INTG_W, REF_LINE);
+end

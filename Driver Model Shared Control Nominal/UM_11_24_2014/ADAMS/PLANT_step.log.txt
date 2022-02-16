@@ -1,0 +1,219 @@
+Info for Full Vehicle Analysis
+
+  Analysis Name :  PLANT_step
+  Analysis Type :  Step Steer Maneuver (Open-loop)
+  A/Car Version :  Adams 2012
+  Built on      :  Mar 23 2012
+  Submitted by  :  James.poplawski
+  On hostname   :  DRENWKSC24VVV1
+  Date          :  2014/11/21,14:06:23
+
+***************************  ANALYSIS PARAMETERS  **************************
+
+              end time :     20.0000
+       number of steps :     400
+      initial velocity :     20.0000  meters/sec
+        steering input :      torque
+        start manuever :         0.0
+              duration :         0.1
+          steer values :            
+               initial :         0.0
+                 final :         0.0
+        cruise control :          no
+         gear position :           4
+        road data file :  mdids://acar_shared/roads.tbl/2d_flat.rdf
+
+******************************  TESTRIG INFO  ******************************
+
+  Testrig Name  :  __MDI_SDI_TESTRIG
+
+
+*****************************  ASSEMBLY INFO  ******************************
+
+  Assembly Name  :  HMMWV_final
+  Assembly Class :  full_vehicle
+  File Name      :  <HMMWV>/assemblies.tbl/HMMWV_final.asy
+
+
+  SUBSYSTEM NAME                       MAJOR ROLE              MINOR ROLE
+
+  hmmwv_body_latest_11th               body                    any
+  humvee_brakes                        brake_system            any
+  handling_tire_front_geometry         wheel                   front
+  handling_tire_rear_geometry          wheel                   rear
+  modified_front_suspension            suspension              front
+  modified_rear_suspension             suspension              rear
+  powertrain_modified                  powertrain              any
+  modified_humvee_steering             steering                front
+
+
+
+*****************************  SUBSYSTEM INFO  *****************************
+
+Info for subsystem:  testrig
+
+  File Name     :  *cannot find subsystem file*
+  Template      :  *cannot find template file*
+  Comments      :
+     Template   :  Driver Input Model
+     Subsystem  :  none
+  Major Role    :  analysis
+  Minor Role    :  any
+
+
+  HARDPOINTS:
+    hardpoint name                  symmetry         x_value    y_value    z_value
+    --------------                  --------         -------    -------    -------
+    path_error_reference            single             0.0         0.0         0.0
+    upright_reference               left/right         0.0         0.0         0.0
+
+
+Info for subsystem:  hmmwv_body_latest_11th
+
+  File Name     :  <HMMWV>/subsystems.tbl/hmmwv_body_latest_11th.sub
+  Template      :  <HMMWV>/templates.tbl/_hummer_body_renamed.tpl
+  Comments      :
+     Template   :  Simple One Part Rigid Chassis
+     Subsystem  :  *no subsystem comments found*
+  Major Role    :  body
+  Minor Role    :  any
+
+
+  HARDPOINTS:
+    hardpoint name                  symmetry         x_value    y_value    z_value
+    --------------                  --------         -------    -------    -------
+    ground_height_reference         single      1200.0000000003         0.0         0.0
+    path_reference                  single             0.0         0.0         0.0
+    front_wheel_center              left/right  266.9999999994  -649.9999999999  330.0000000012
+    rear_wheel_center               left/right  2500.0000000002  -649.9999999999  330.0000000012
+
+
+Info for subsystem:  humvee_brakes
+
+  File Name     :  <HMMWV>/subsystems.tbl/humvee_brakes.sub
+  Template      :  <HMMWV>/templates.tbl/_brake_system_4Wdisk.tpl
+  Comments      :
+     Template   :  4 Wheel Disk Brake System
+     Subsystem  :  *no subsystem comments found*
+  Major Role    :  brake_system
+  Minor Role    :  any
+
+
+Info for subsystem:  handling_tire_front_geometry
+
+  File Name     :  <HMMWV>/subsystems.tbl/handling_tire_front_geometry.sub
+  Template      :  <HMMWV>/templates.tbl/_handling_tire_geometry.tpl
+  Comments      :  *no comments found*
+  Major Role    :  wheel
+  Minor Role    :  front
+
+
+Info for subsystem:  handling_tire_rear_geometry
+
+  File Name     :  <HMMWV>/subsystems.tbl/handling_tire_rear_geometry.sub
+  Template      :  <HMMWV>/templates.tbl/_handling_tire_geometry.tpl
+  Comments      :  *no comments found*
+  Major Role    :  wheel
+  Minor Role    :  rear
+
+
+Info for subsystem:  modified_front_suspension
+
+  File Name     :  <HMMWV>/subsystems.tbl/modified_front_suspension.sub
+  Template      :  <HMMWV>/templates.tbl/_double_wishbone.tpl
+  Comments      :
+     Template   :  Simple Double Wishbone Suspension
+     Subsystem  :  *no subsystem comments found*
+  Major Role    :  suspension
+  Minor Role    :  front
+
+
+  HARDPOINTS:
+    hardpoint name                  symmetry         x_value    y_value    z_value
+    --------------                  --------         -------    -------    -------
+    drive_shaft_inr                 left/right       406.4  -199.9999999992     485.648
+    lca_front                       left/right     142.748    -307.086     441.706
+    lca_outer                       left/right     401.574    -786.511     323.596
+    lca_rear                        left/right      589.28    -307.086     441.706
+    lwr_strut_mount                 left/right    268.8082    -543.941    403.3266
+    subframe_front                  left/right  6.3999999991  -450.0000000007     441.706
+    subframe_rear                   left/right  806.4000000009  -450.0000000007     441.706
+    tierod_inner                    left/right     616.331    -448.437     495.935
+    tierod_outer                    left/right    541.8328   -821.1058      425.45
+    top_mount                       left/right     262.001   -497.7892    764.8448
+    uca_front                       left/right      414.02   -445.9732     686.308
+    uca_outer                       left/right    419.0492    -715.518    657.1996
+    uca_rear                        left/right     634.111    -477.774     637.286
+    wheel_center                    left/right       406.4    -909.701     415.417
+
+
+Info for subsystem:  modified_rear_suspension
+
+  File Name     :  <HMMWV>/subsystems.tbl/modified_rear_suspension.sub
+  Template      :  <HMMWV>/templates.tbl/_double_wishbone.tpl
+  Comments      :
+     Template   :  Simple Double Wishbone Suspension
+     Subsystem  :  *no subsystem comments found*
+  Major Role    :  suspension
+  Minor Role    :  rear
+
+
+  HARDPOINTS:
+    hardpoint name                  symmetry         x_value    y_value    z_value
+    --------------                  --------         -------    -------    -------
+    drive_shaft_inr                 left/right      3708.4      -203.2     472.948
+    lca_front                       left/right    3520.694    -307.086    441.7822
+    lca_outer                       left/right      3708.4    -786.511    323.6722
+    lca_rear                        left/right    3967.226    -307.086    441.7822
+    lwr_strut_mount                 left/right    3847.973    -543.941    403.3266
+    subframe_front                  left/right   3308.4008   -450.0118     441.706
+    subframe_rear                   left/right     4108.45   -450.0118     441.706
+    tierod_inner                    left/right    3520.694    -416.052      500.38
+    tierod_outer                    left/right   3573.6784   -821.1058    432.5112
+    top_mount                       left/right    3847.973   -497.7892    764.8448
+    uca_front                       left/right    3393.948    -462.153    667.4612
+    uca_outer                       left/right      3708.4    -715.518    657.6822
+    uca_rear                        left/right     3667.76    -462.153    667.4612
+    wheel_center                    left/right      3708.4    -909.701    415.4932
+
+
+Info for subsystem:  powertrain_modified
+
+  File Name     :  <HMMWV>/subsystems.tbl/powertrain_modified.sub
+  Template      :  <HMMWV>/templates.tbl/_powertrain_modified.tpl
+  Comments      :
+     Template   :  Example of a non-spinning powertrain
+     Subsystem  :  *no subsystem comments found*
+  Major Role    :  powertrain
+  Minor Role    :  any
+
+
+  HARDPOINTS:
+    hardpoint name                  symmetry         x_value    y_value    z_value
+    --------------                  --------         -------    -------    -------
+    front_engine_mount              left/right        25.4      -406.4       508.0
+    rear_diff_mount                 left/right      3962.4      -406.4       508.0
+    rear_engine_mount               left/right       965.2      -508.0       508.0
+
+
+Info for subsystem:  modified_humvee_steering
+
+  File Name     :  <HMMWV>/subsystems.tbl/modified_humvee_steering.sub
+  Template      :  <HMMWV>/templates.tbl/_rack_pinion_steering.tpl
+  Comments      :
+     Template   :  Simple Rack and Pinion Steering System
+     Subsystem  :  *no subsystem comments found*
+  Major Role    :  steering
+  Minor Role    :  front
+
+
+  HARDPOINTS:
+    hardpoint name                  symmetry         x_value    y_value    z_value
+    --------------                  --------         -------    -------    -------
+    intermediate_shaft_forward      single      816.3309999509  -323.436999998       812.8
+    intermediate_shaft_rearward     single      1144.1309999503  -323.436999998  999.1350000013
+    pinion_pivot                    single         616.331  -323.436999998     495.935
+    steering_wheel_center           single      1646.5309999489  -323.436999998  1149.9350000009
+    rack_house_mount                left/right     616.331  -372.6370000001     495.935
+    tierod_inner                    left/right     616.331    -448.437     495.935
+

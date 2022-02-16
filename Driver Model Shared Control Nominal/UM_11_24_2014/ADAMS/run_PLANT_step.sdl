@@ -1,0 +1,114 @@
+
+
+=================================================================
+                        Adams/Smartdriver
+                       Version Adams 2012
+=================================================================
+
+
+=================================================================
+  LOGFILE: run_PLANT_step.sdl
+TIMESTAMP: 2014-12-9, 02:38:15 PM
+=================================================================
+
+
+SmartDriver initialization starts ...
+SmartDriver initialization ... OK
+
+Driver model         : VEHICLE_STANDARD
+Driver mode          : ADAMS
+Driver file          : -not defined-
+Experiment Name      : maneuver
+Static Setup Type    : NONE
+Number of maneuvers  : 1
+Maneuver 01 name     : STEP_STEER
+Active maneuver name : STEP_STEER
+
+
+... active maneuver (1) info ..
+
+
+maneuver name       : STEP_STEER
+  abort time        : 20.000000
+  step size         : 0.010000
+- demand : steering
+    actuator_type   : TORQUE
+    control_method  : OPEN
+    control_mode    : RELATIVE
+    control_type    : STEP
+    control_values  : 0.000000
+                    : 0.000000
+                    : 0.100000
+                    : 0.000000
+- demand : throttle
+    control_method  : OPEN
+    control_mode    : ABSOLUTE
+    control_type    : CONSTANT
+    control_values  : 0.000000
+- demand : braking
+    control_method  : OPEN
+    control_mode    : ABSOLUTE
+    control_type    : CONSTANT
+    control_values  : 0.000000
+- demand : gear
+    control_method  : OPEN
+    control_mode    : ABSOLUTE
+    control_type    : CONSTANT
+    control_values  : 4.000000
+- demand : clutch
+    control_method  : OPEN
+    control_mode    : ABSOLUTE
+    control_type    : CONSTANT
+    control_values  : 0.000000
+- end condition #1
+    type            : TIME
+    test            : >>
+    group           : __NO_GROUP__
+    trigger value   : 20.000000
+    allowed error   : 0.000000
+    filter time     : 0.000000
+    delay time      : 0.000000
+
+
+Initial clutch position      : 0.000000
+Initial gear                 : 4
+Gears number                 : 4
+Gear 1 upshifting RPM        : 4000.000000
+Gear 1 downshifting RPM      : 700.000000
+Gear 2 upshifting RPM        : 4000.000000
+Gear 2 downshifting RPM      : 700.000000
+Gear 3 upshifting RPM        : 4000.000000
+Gear 3 downshifting RPM      : 700.000000
+Gear 4 upshifting RPM        : 4000.000000
+Gear 4 downshifting RPM      : 700.000000
+Required initial speed       : 20.000000
+Front brakes max torque      : 1700.000000
+Rear  brakes max torque      : 1000.000000
+Front brakes bias            : 0.550000
+Front tires radius           : 0.320000
+Rear  tires radius           : 0.320000
+Throttle position            : 0.000000
+Brake position               : 0.000000
+Required Ax computation      : OFF
+Required Ax filtering        : OFF
+Required Vx computation      : OFF
+RPM controller               : OFF
+Throttle-Brake PID ARW       : ON
+Throttle                     : ON
+Brakes                       : ON
+Initial tires to throttle cnt: 1.000000
+Initial tires to brakes   cnt: 1.000000
+Initial tires to clutch   cnt: 1.000000
+Steering mode                : 1
+Vehicle wheelbase            : 3.302000
+Initial steering-wheel angle : 0.000000[deg]
+Steering-wheel/Wheel ratio   : 26.700000
+Steering wheel/rack ratio    : 174.500000
+Steering-wheel min angle     : -180.000000[deg]
+Steering-wheel max angle     : 180.000000[deg]
+Steering-wheel min torque    : -100.000000[Nm/rad]
+Steering-wheel max torque    : 100.000000[Nm/rad]
+Steering-rack min disp       : -1.000000
+Steering-rack max disp       : 1.000000
+Steering-rack min force      : -10000.000000
+Steering-rack max force      : 10000.000000

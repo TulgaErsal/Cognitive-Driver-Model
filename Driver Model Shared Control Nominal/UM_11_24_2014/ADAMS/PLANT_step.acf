@@ -1,0 +1,10 @@
+
+file/model=PLANT_step
+string/4, string=PLANT_step.xml
+preferences/solver=CXX
+preferences/status=on
+output/nosep
+control/ routine=abgVDM::EventInit, function=user(4,1,9,0,2,7,5,15)
+control/ routine=abgVDM::EventRunAll, function=user(0)
+!
+stop

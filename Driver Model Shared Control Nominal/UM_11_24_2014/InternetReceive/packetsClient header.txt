@@ -1,0 +1,2 @@
+1: packet number [-]
+2-end: client coupling variables

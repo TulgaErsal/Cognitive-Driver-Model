@@ -1,0 +1,75 @@
+C:\MSC~1.SOF\ADAMS_~1\2012\
+acar_solver
+PLANT_step
+PLANT_step
+interactive
+discrete
+0.010000
+automatic
+no 
+NUMBER OF COMMANDS
+1
+file/command=PLANT_step_controls.acf
+NUMBER OF INPUTS/OUTPUTS
+2 45
+INPUT VARIABLES
+powertrain_modified.Axle_Torque 296 1
+modified_humvee_steering.Steering_Motion_from_Cntl_System 297 1
+OUTPUT VARIABLES
+testrig.body_disp_x 9 1
+testrig.body_disp_y 10 1
+testrig.body_disp_z 11 1
+testrig.body_velocity_x 12 1
+testrig.body_velocity_y 13 1
+testrig.body_velocity_z 14 1
+testrig.body_acce_x 15 1
+testrig.body_acce_y 16 1
+testrig.body_acce_z 17 1
+testrig.body_roll_angle 23 1
+testrig.body_roll_rate 24 1
+testrig.body_pitch_angle 21 1
+testrig.body_pitch_rate 22 1
+testrig.body_yaw_angle 18 1
+testrig.body_yaw_rate 19 1
+testrig.body_yaw_acce 20 1
+testrig.body_side_slip_angle 27 1
+testrig.steering_wheel_angle 31 1
+testrig.steering_wheel_velocity 32 1
+testrig.steering_wheel_acce 33 1
+testrig.steering_wheel_torque 30 1
+testrig.steering_rack_travel 28 1
+testrig.engine_speed 35 1
+testrig.var_dist_travel 8 1
+testrig.vas_steering_demand.variable 79 1
+testrig.vas_throttle_demand.variable 81 1
+testrig.vas_brake_demand.variable 83 1
+testrig.vas_gear_demand.variable 85 1
+testrig.vas_clutch_demand.variable 87 1
+handling_tire_front_geometry.lft_tire_rolling_radius 184 1
+handling_tire_front_geometry.rgt_tire_rolling_radius 185 1
+handling_tire_front_geometry.lft_whl_omega 186 1
+handling_tire_front_geometry.rgt_whl_omega 187 1
+handling_tire_rear_geometry.lft_tire_rolling_radius 264 1
+handling_tire_rear_geometry.rgt_tire_rolling_radius 265 1
+handling_tire_rear_geometry.lft_whl_omega 266 1
+handling_tire_rear_geometry.rgt_whl_omega 267 1
+modified_front_suspension.l_spr_disp 268 1
+modified_front_suspension.r_spr_disp 269 1
+modified_front_suspension.l_spr_vel 270 1
+modified_front_suspension.r_spr_vel 271 1
+modified_rear_suspension.l_spr_disp 272 1
+modified_rear_suspension.r_spr_disp 273 1
+modified_rear_suspension.l_spr_vel 274 1
+modified_rear_suspension.r_spr_vel 275 1
+NUMBER OF STATES
+1
+ADAMS solver
+C++ 
+ADAMS Host
+
+ADAMS cwd
+C:\Users\James.poplawski\Documents\MATLAB\ADAMS Testing
+ADAMS_pinput_id
+0
+ADAMS_poutput_id
+0

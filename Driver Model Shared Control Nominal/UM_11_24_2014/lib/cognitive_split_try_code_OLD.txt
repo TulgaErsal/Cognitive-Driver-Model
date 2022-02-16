@@ -1,0 +1,44 @@
+% My concept is to break running of the plant into two
+        % pieces, one before the next scheduled cognitive update and the
+        % other after.  In between the commands pushed to the plant can
+        % change
+        
+        % TEMP:  First test is to see if splitting with no
+        % cognitive update or command changes works properly!
+        
+        % Step 1: Determine next update
+        % TEMP: Pick random integer between 1 and 100 to represent break
+        % point.  Split PUSH into two parts with first time sample of second part
+        % reset to zero
+        
+        %splitIndex=floor(rand(1)*100);
+        splitIndex=50;
+        
+        PUSH1.CMD_TM=PUSH.CMD_TM(1:splitIndex);
+        PUSH1.CMD_SA=PUSH.CMD_SA(1:splitIndex);
+        PUSH1.CMD_UX=PUSH.CMD_UX(1:splitIndex);
+        PUSH1.CMD_SR=PUSH.CMD_SR(1:splitIndex);
+        PUSH1.CMD_AX=PUSH.CMD_AX(1:splitIndex);
+        PUSH1.T_TOTAL=PUSH1.CMD_TM(end);
+        
+        splitStart=min(splitIndex+1,100);
+        PUSH2.CMD_TM=PUSH.CMD_TM(splitStart:100);PUSH2.CMD_TM=PUSH2.CMD_TM-PUSH2.CMD_TM(1);
+        PUSH2.CMD_SA=PUSH.CMD_SA(splitStart:100);
+        PUSH2.CMD_UX=PUSH.CMD_UX(splitStart:100);
+        PUSH2.CMD_SR=PUSH.CMD_SR(splitStart:100);
+        PUSH2.CMD_AX=PUSH.CMD_AX(splitStart:100);
+        PUSH2.T_TOTAL=PUSH2.CMD_TM(end);
+        
+        % Step 2: Run first part of plant execution
+        
+        [PLANT, TAC, TST, EXE_Telapsed, ERROR_P] ...
+                                = RUN_PLANT_wrapper(SPEC, PUSH1, TAC, TST, SIM); %#ok<ASGLU>
+        
+        % Step 3: Update cognitive model
+        
+        % Step 4: Alter plant commands  (Including shared control blending)
+        
+        % Step 5: Run second part of plant execution  
+        
+        [PLANT, TAC, TST, EXE_Telapsed, ERROR_P] ...
+                                = RUN_PLANT_wrapper(SPEC, PUSH2, TAC, TST, SIM); %#ok<ASGLU>

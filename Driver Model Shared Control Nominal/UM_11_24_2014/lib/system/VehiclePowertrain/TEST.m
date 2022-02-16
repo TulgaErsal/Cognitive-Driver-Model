@@ -1,0 +1,38 @@
+load('DATA_VESIM_CC_BRAKE.mat')
+CMD_TSTOP = ones(1,T_LENGTH);
+set_param('VEHICLE_DYN_TRAIN','SimulationCommand','start','SimulationCommand','pause')
+v2struct(DATA_VESIM_CC_BRAKE)
+INPUT.DATA_VESIM_CC_BRAKE = DATA_VESIM_CC_BRAKE;
+
+open_system('VEHICLE_DYN_TRAIN')
+%load_system('VEHICLE_DYN_TRAIN')
+% Takes the simulation to time 0.0 and pauses it
+INPUT.T_TOTAL=20;
+INPUT.STEP=0.01;
+INPUT.CMD_TM=0:0.01:20;
+T_LENGTH = length(INPUT.CMD_TM);
+INPUT.CMD_UX = 10*ones(1,T_LENGTH);
+INPUT.MODE = 0*ones(1,T_LENGTH);
+INPUT.CMD_TH = [0:0.1:0.9 ones(1,T_LENGTH-10)];
+INPUT.CMD_BR = 0*ones(1,T_LENGTH);
+INPUT.CMD_ST = 0*ones(1,T_LENGTH);
+INPUT.CMD_TSTOP = 0*ones(1,T_LENGTH);
+
+
+
+load DATA_HMMWV_PLANT.mat
+INPUT.DATA_HMMWV = DATA_HMMWV;
+% initial consitions    
+U_INIT = 0.01;
+STATES_INIT          = zeros(1,32);
+STATES_INIT(3)       = DATA_HMMWV.HG;
+STATES_INIT(6)       = pi/2;
+STATES_INIT(7)       = U_INIT;
+STATES_INIT(17:20)   = DATA_HMMWV.XT_INIT;
+STATES_INIT(21:24)   = DATA_HMMWV.XS_INIT;
+STATES_INIT(25:28)   = 0./DATA_HMMWV.ZT_INIT;
+INPUT.STATES_INIT = STATES_INIT;
+
+
+
+OUTPUT = SIM_14DoF_POWERTRAIN(INPUT)

@@ -1,0 +1,10 @@
+init: initialization
+lut:  look-up table
+sd:   sensor data
+chk:  check
+gs:   go straight
+s2g:  steer towards goal
+opt:  optimization
+ldp:  lidar data processing
+alt:  alternative solution
+res:  result

@@ -1,0 +1,14 @@
+SAVE_DATA_HMMWV_RAW.m   -->
+
+SAVE_DATA_HMMWV.m       -->
+
+SAVE_DATA_HMMWV_GAI.m   -->
+
+    % data for the true system, which is represented using a 14 DoF vehicle model
+    SAVE_DATA_HMMWV_PLANT.m
+
+    % data for the 14 DoF vehicle model used in the algorithm
+    SAVE_DATA_HMMWV_14DoF.m    
+ 
+    % data for the 2 DoF / 3 DoF vehicle model used in the algorithm
+    SAVE_DATA_HMMWV_3DoF.m

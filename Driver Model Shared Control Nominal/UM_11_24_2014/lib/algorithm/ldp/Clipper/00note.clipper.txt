@@ -1,0 +1,88 @@
+links:
+http://stackoverflow.com/questions/1109536/an-algorithm-for-inflating-deflating-offsetting-buffering-polygons
+http://www.mathworks.com/matlabcentral/fileexchange/36241-polygon-clipping-and-offsetting
+http://www.angusj.com/delphi/clipper.php
+http://www.angusj.com/delphi/clipper/documentation/Docs/_Body.htm
+
+---------------------------------------------------------------------------
+
+Description This is a mex wrapper for Angus Johnson's Clipper library:
+http://www.angusj.com/delphi/clipper.php, based on Sebastian Hölz's mex
+wrapper for the GPC library. This library has some speed advantages over
+GPC, but the primary addition is the ability to offset polygons.
+  
+In order to use this, you must first download the clipper library from
+the above link (I used ver4.7.5) and put the files clipper.cpp and
+clipper.hpp in the same folder as the files you downloaded from this
+submission. Then compile your own mexfile by running the command:
+
+mex clipper.cpp mexclipper.cpp
+
+The example file, testclipper.m, shows all the basic usage. The clipper
+function takes input as int64 and returns answers as doubles, so remember
+to convert the data types and scale appropriately.
+  
+Details on the library can be found here:
+http://www.angusj.com/delphi/clipper/documentation/Docs/_Body.htm.
+Self-intersecting polygons can be used in clipping operations and
+different fill types are available. For offsetting, polygons cannot
+self-intersect and perimeters must have a "true" orientation while holes
+must be "false". The orientation of polygons can also be checked with
+this wrapper.
+  
+Call clipper with no arguments to view help.
+
+Acknowledgements Polygon Clipper inspired this file.
+
+Required Products	MATLAB MATLAB release	 MATLAB 7.12 (R2011a) Other
+requirements	A C compiler that Matlab's mex is able to use.
+
+---------------------------------------------------------------------------
+
+07 Mar 2014 John
+
+The upgrades to the code to a newer version of the Clipper library are
+fairly trivial (though requires either some C++ knowledge or know how to
+use the diff/patch command line utility). Included is the text of the
+differences between the current code you can download here (as of Mar
+2014) and will work with Clipper version 6.13a. If you want to make the
+changes manually, remove any lines of code with a minus sign and add any
+of the lines with a plus sign. Hope this helps some who want newer
+features and bugfixes of more recent clipper libraries (ver 4.8 is almost
+2 years older than 6.13a).
+
+$ diff -uN mexclipperOrig.cpp mexclipper.cpp --- mexclipperOrig.cpp
+2014-03-07 09:22:34.691622400 -0500 +++ mexclipper.cpp 2014-03-07
+11:08:12.015096600 -0500 @@ -5,10 +5,11 @@
+
+using namespace ClipperLib;
+
++typedef __int64 LONG64; +typedef __int64 long64;
+
+- -void read_polygons_MATLAB(const mxArray *prhs, Polygons &poly) +void
+read_polygons_MATLAB(const mxArray *prhs, Paths &poly) { int id_x, id_y;
+int num_contours; @@ -60,7 +61,7 @@ } }
+
+-void write_polygons_MATLAB(mxArray *plhs, Polygons &solution) +void
+write_polygons_MATLAB(mxArray *plhs, Paths &solution) { mxArray *x_out,
+*y_out;
+
+@@ -81,7 +82,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs,
+const mxArray *prhs[]) { - Polygons subj, clip, solution; + Paths subj,
+clip, solution; const char *field_names[] = {"x","y"}; int dims[2];
+
+@@ -223,8 +224,8 @@ read_polygons_MATLAB(prhs[1], clip);
+
+Clipper c; - c.AddPolygons(subj, ptSubject); - c.AddPolygons(clip,
+ptClip); + c.AddPaths(subj, ptSubject,true); + c.AddPaths(clip,
+ptClip,true);
+
+if (c.Execute(CT, solution, SFT, CFT)){ dims[0] = 1; @@ -259,7 +260,9 @@
+else jt=jtMiter;
+
+- OffsetPolygons(subj, solution, delta, jt, ml); + ClipperOffset co; +
+co.AddPaths(subj,jt, etClosedPolygon); + co.Execute(solution,delta);
+dims[0] = 1; dims[1] = solution.size(); plhs[0] = mxCreateStructArray(2,
+dims, 2, field_names);
+
+---------------------------------------------------------------------------
